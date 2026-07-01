@@ -1,0 +1,1093 @@
+/* --- Reset y Variables Globales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-font: 'Poppins', sans-serif;
+    --serif-font: 'Playfair Display', serif;
+    --card-bg: #fdf5e6;
+    --navbar-bg: #fdf5e6;
+    --accent-color: #581c1c;
+    --text-dark: #2c2520;
+}
+
+body {
+    font-family: var(--primary-font);
+    background-color: #111;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* --- Navegación Flotante (Independiente) --- */
+.floating-navbar {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    max-width: 1200px;
+    background-color: var(--navbar-bg);
+    border-radius: 50px;
+    padding: 0.7rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-name {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--text-dark);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+    opacity: 0.6;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-icon, .menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.3rem;
+}
+
+/* --- El contenedor Main global: Libre y fluido hacia abajo --- */
+.hero-wrapper {
+    width: 100%;
+    background-color: #111; /* Color de fondo general para el resto de la web */
+}
+
+/*La sección principal que contiene el fondo exclusivo --- */
+.hero-section {
+    width: 100%;
+    min-height: 120vh;
+    /* La imagen de fondo se queda SÓLO acá */
+   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                  url('../Images/FotoPrincipalFondoEvento.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Flexbox interno: se encarga de pegar la tarjeta al piso de ESTA sección */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+    padding: 0 1rem; /* Margen a los costados para que no toque los bordes del monitor */
+}
+
+/* --- La Tarjeta Crema --- */
+.content-card {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #fdf5e6;
+    padding: 3.5rem 3.5rem 1rem 3.5rem;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+    /* Curvatura solo arriba; abajo plano para asentar en el piso de la sección */
+    border-radius: 40px 40px 0 0; 
+    /* Distribución interna de textos e imagen */
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    align-items: center;
+    gap: 4rem;
+
+    opacity: 0;
+    transform: translateY(50px); /* Viene desde abajo */
+    transition: opacity 1s ease, transform 1s ease; /* Transición suave de 1 segundo */
+}
+.content-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Estilos de contenido interno (Se mantienen limpios) --- */
+.card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #2c2520;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.main-title span {
+    font-style: italic;
+}
+
+.description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: #2c2520;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.btn-order {
+    background-color: #581c1c;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 3.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.featured-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+    justify-self: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-left: 1px solid rgba(44, 37, 32, 0.2);
+}
+
+
+/* --- Contenedor de la Sección Completa (Nuevo color de fondo) --- */
+.spaces-gallery-section {
+    width: 100%;
+    background-color: var(--card-bg);
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Estilos del Encabezado (Título y Subtítulo) --- */
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dark);
+    opacity: 0.75; /* Un poco más transparente para darle jerarquía visual */
+    line-height: 1.6;
+}
+
+/* --- Contenedor de la Grilla (Mantiene tu Grid exacto) --- */
+.spaces-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 120px);
+    gap: 12px; /* Subimos un toque el gap para que respire con el nuevo fondo */
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* --- Estilos base de los bloques --- */
+.space-block {
+   position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: #2a3327;
+    
+    opacity: 0;
+    filter: blur(5px); /* Un desenfoque sutil muy premium */
+    transform: translateY(40px); /* Vienen desde un poco más abajo */
+    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+}
+
+.space-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Se mantiene para el hover */
+}
+.space-block.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+/* --- Overlay del Hover --- */
+.space-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 37, 32, 0.85); /* Tono marrón oscuro cálido que combina con el oliva */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.space-overlay span {
+    font-family: 'Poppins', sans-serif;
+    color: #fdf5e6;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+/* --- Disparadores Hover --- */
+.space-block:hover img { transform: scale(1.05); }
+.space-block:hover .space-overlay { opacity: 1; }
+.space-block:hover .space-overlay span { transform: translateY(0); }
+
+/* --- Coordenadas del Grid (Tu lógica exacta) --- */
+.block-1 { grid-column: span 3 / span 3; grid-row: span 3 / span 3; }
+.block-2 { grid-column: span 2 / span 2; grid-row: span 3 / span 3; grid-column-start: 4; }
+.block-3 { grid-column: span 2 / span 2; grid-row: span 2 / span 2; grid-row-start: 4; }
+.block-4 { grid-column: span 3 / span 3; grid-row: span 2 / span 2; grid-column-start: 3; grid-row-start: 4; }
+.block-5 { grid-column: span 3 / span 3; grid-row: span 3 / span 3; grid-row-start: 6; }
+.block-6 { grid-column: span 2 / span 2; grid-row: span 3 / span 3; grid-column-start: 4; grid-row-start: 6; }
+
+/* --- Contenedor de la Sección de Servicios --- */
+.services-section {
+    width: 100%;
+    background-color: #1c1714; /* Fondo marrón tabaco oscuro premium */
+    padding: 8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.services-header {
+    text-align: center;
+    max-width: 650px;
+    margin-bottom: 5rem;
+}
+
+.services-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #fdf5e6; /* Crema */
+    margin-bottom: 1.2rem;
+}
+
+.services-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: #fdf5e6;
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+/* --- Contenedor de las Cards (Manejo de Layout) --- */
+.services-container {
+    display: grid;
+    /* Creamos una grilla fluida de 4 columnas en desktop */
+    grid-template-columns: repeat(4, 1fr); 
+    width: 100%;
+    max-width: 1200px;
+    gap: 0; /* Eliminamos el gap tradicional para usar divisores limpios */
+}
+
+/* --- Diseño Premium de cada Card (Estrategia de Marketing) --- */
+.service-item {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineación a la izquierda para mejor lectura */
+    background-color: transparent; /* Sin fondo pesado */
+    
+    /* Creamos los divisores verticales entre tarjetas usando bordes laterales sutiles */
+    border-right: 1px solid rgba(253, 245, 230, 0.1); 
+    
+    /* Estado inicial para tu IntersectionObserver */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Quitamos el borde a la última tarjeta para que no quede flotando a la derecha */
+.service-item:last-child {
+    border-right: none;
+}
+
+/* Cuando el script del scroll activa la clase */
+.service-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* El contenedor del icono / identificador visual */
+.service-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(88, 28, 28, 0.2); /* Fondo vino traslúcido sutil */
+    color: #fdf5e6;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(88, 28, 28, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.service-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #fdf5e6;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.service-item p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: #fdf5e6;
+    opacity: 0.65;
+    line-height: 1.6;
+}
+
+/* --- Interactividad Micro-UX (Hover sutil) --- */
+.service-item:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    background-color: rgba(88, 28, 28, 0.6); /* Intensifica el tono vino al pasar el mouse */
+}
+
+
+/* --- Contenedor de la Sección de Testimonios --- */
+.reviews-section {
+    width: 100%;
+    background-color: #1e251c; /* Fondo verde oliva profundo coordinado */
+    padding: 8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews-header {
+    text-align: center;
+    max-width: 650px;
+    margin-bottom: 5rem;
+}
+
+.reviews-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #fdf5e6; /* Color crema de la paleta */
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.reviews-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: #fdf5e6;
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+/* --- Contenedor de las Tarjetas --- */
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem; /* Espaciado amplio entre testimonios */
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* --- Diseño de la Card de Opinión (Estilo Flotante / Traslúcido) --- */
+.review-card {
+    flex: 1;
+    background-color: rgba(253, 245, 230, 0.04); /* Fondo crema con muy baja opacidad */
+    border: 1px solid rgba(253, 245, 230, 0.08); /* Borde sutil casi invisible */
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    
+    /* Configuración para el script de animación por scroll */
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Cuando se activa mediante el IntersectionObserver en JS */
+.review-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Las estrellas de valoración */
+.review-stars {
+    color: #e5dac8;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+}
+
+/* El texto del testimonio */
+.review-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #fdf5e6;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+}
+
+/* El bloque del autor (Etiqueta <cite>) */
+.review-author {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-top: 1px solid rgba(253, 245, 230, 0.15);
+    padding-top: 1.2rem;
+}
+
+.review-author strong {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #fdf5e6;
+    letter-spacing: 0.5px;
+}
+
+.review-author span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    color: #fdf5e6;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Sección de Contacto --- */
+.contact-section {
+    width: 100%;
+    background-color: #1c1714; /* Fondo marrón tabaco oscuro */
+    padding: 8rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+/* Columna Informativa */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #fdf5e6;
+    margin-bottom: 1.5rem;
+}
+
+.contact-subtitle {
+    font-size: 1rem;
+    color: #fdf5e6;
+    opacity: 0.7;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.contact-details p {
+    font-size: 0.95rem;
+    color: #fdf5e6;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+}
+
+/* El Bloque del Formulario (Tarjeta limpia que resalta) */
+.contact-form {
+    background-color: #fdf5e6;
+    padding: 3.5rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    /* Preparado para animación de scroll */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-form.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.form-group label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #2c2520;
+}
+
+/* Inputs, Selects y Textareas estandarizados */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(44, 37, 32, 0.05); /* Fondo sutil grisáceo/marrón */
+    border: 1px solid rgba(44, 37, 32, 0.1);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #2c2520;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #581c1c; /* Borde color vino al hacer foco */
+    background-color: #ffffff;
+}
+
+/* Botón de Envío Directo */
+.btn-submit {
+    background-color: #581c1c; /* Color vino de conversión */
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 1rem;
+}
+
+.btn-submit:hover {
+    background-color: #421414;
+    transform: translateY(-2px);
+}
+
+/* --- ESTILOS DEL FOOTER --- */
+.main-footer {
+    width: 100%;
+    background-color: #121412; /* Negro orgánico para cerrar la web */
+    padding: 5rem 2rem 2rem 2rem;
+    border-top: 1px solid rgba(253, 245, 230, 0.05);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(253, 245, 230, 0.1);
+}
+
+.footer-brand strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #fdf5e6;
+    letter-spacing: 1px;
+}
+
+.footer-brand p {
+    font-size: 0.85rem;
+    color: #fdf5e6;
+    opacity: 0.6;
+    margin-top: 0.5rem;
+}
+
+.footer-links h4,
+.footer-social h4 {
+    color: #fdf5e6;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-links a {
+    color: #fdf5e6;
+    opacity: 0.6;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: opacity 0.2s;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.social-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-row a {
+    background-color: rgba(253, 245, 230, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.social-row a:hover {
+    background-color: #581c1c;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #ffffff;
+    opacity: 0.4;
+}
+.footer-logo {
+    font-family: 'Alice', serif;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: lowercase;
+}
+.footer-bottom p{
+    color: #ffffff;
+}
+
+
+
+@media (max-width: 1024px) {
+    /* En tablets pasa a un diseño de 2x2 */
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .service-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(253, 245, 230, 0.1);
+        padding: 2rem;
+    }
+    
+    /* Quitamos el borde inferior a la fila de abajo */
+    .service-item:nth-child(3),
+    .service-item:nth-child(4) {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .spaces-grid-container { grid-template-rows: repeat(8, 90px); }
+    .section-title { font-size: 2.3rem; }
+
+    .contact-container {
+        grid-template-columns: 1fr; /* Pasa a una sola columna */
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .contact-info {
+        align-items: center;
+    }
+
+    .contact-title {
+        font-size: 2.8rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+    
+    .footer-brand {
+        grid-column: span 2;
+        text-align: center;
+    }
+}
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .floating-navbar {
+        top: 1rem;
+        width: calc(100% - 1.5rem);
+        padding: 0.6rem 1.5rem;
+        border-radius: 30px;
+    }
+
+    /* Ocultamos los enlaces de escritorio por defecto */
+    .nav-menu {
+        display: none; 
+    }
+
+    /* Esta clase la va a activar el JS cuando el usuario toque el botón de hamburguesa */
+    .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        
+        /* Posicionamiento absoluto respecto a la barra flotante */
+        position: absolute;
+        top: 4.5rem;
+        left: 0;
+        width: 100%;
+        background-color: var(--navbar-bg);
+        padding: 2rem 1.5rem;
+        border-radius: 25px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        z-index: 110;
+    }
+
+    .nav-menu.open a {
+        font-size: 1rem;
+        display: block;
+        width: 100%;
+    }
+
+    /* Hacemos visible el botón de hamburguesa ☰ */
+    .menu-toggle {
+        display: block;
+        font-size: 1.4rem;
+        margin-left: 0.5rem;
+    }
+    
+    /* Achicamos un poco los iconos de perfil/favoritos para ganar espacio */
+    .nav-icon {
+        font-size: 1rem;
+    }
+    .content-card {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .card-text {
+        align-items: center;
+        text-align: center;
+    }
+
+    .featured-img {
+        border-left: none;
+        padding-left: 0;
+        max-width: 260px;
+    }
+
+    .spaces-gallery-section { padding: 4rem 1rem; }
+    .section-header { margin-bottom: 2.5rem; }
+    
+    .spaces-grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    .space-block {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        height: 240px;
+    }
+    
+    .space-overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+        opacity: 1;
+    }
+    
+    .space-overlay span { transform: translateY(0); }
+
+    .services-section {
+        padding: 5rem 1.5rem;
+    }
+    
+    .services-header {
+        margin-bottom: 3rem;
+    }
+    
+    .services-title {
+        font-size: 2.3rem;
+    }
+
+    /* En celulares pasa a una sola columna vertical */
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(253, 245, 230, 0.1);
+        align-items: center;
+        text-align: center;
+        padding: 2.5rem 1rem;
+    }
+    
+    .service-item:last-child {
+        border-bottom: none;
+    }
+
+    .reviews-section {
+        padding: 5rem 1.5rem;
+    }
+
+    .reviews-header {
+        margin-bottom: 3.5rem;
+    }
+
+    .reviews-title {
+        font-size: 2.3rem;
+    }
+
+    /* En celulares pasamos de filas paralelas a una lista vertical */
+    .reviews-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .review-card {
+        padding: 2.5rem 1.8rem;
+    }
+
+    .contact-section {
+        padding: 5rem 1rem;
+    }
+
+    .contact-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .social-row {
+        justify-content: center;
+    }
+}
+
+/* --- Contenedor Global Fijo --- */
+.wsp-menu-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 999;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* --- Botón Principal (El Disparador) --- */
+.wsp-main-btn {
+    background-color: #25d366; /* Verde WhatsApp oficial */
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wsp-main-btn:hover {
+    transform: scale(1.08);
+}
+
+/* Efecto de rotación en la cruz/icono al abrir */
+.wsp-menu-container.open .wsp-main-btn {
+    transform: rotate(135deg);
+    background-color: #581c1c;
+}
+
+/* --- El Submenú (Oculto por defecto) --- */
+.wsp-submenu {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.8rem;
+    pointer-events: none;
+}
+
+/* --- Los Sub-botones individuales --- */
+.wsp-sub-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fdf5e6;
+    border: 2px solid #25d366;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative;
+    
+    /* Estado inicial de animación (Encogidos e invisibles) */
+    opacity: 0;
+    transform: scale(0) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+
+/* Tooltips flotantes (Cartelitos que dicen qué es cada botón) */
+.wsp-sub-btn::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 4rem;
+    background-color: #2c2520;
+    color: #fdf5e6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.wsp-sub-btn:hover::after {
+    opacity: 1;
+}
+
+/* --- ESTADO ABIERTO (Se activa con JS) --- */
+.wsp-menu-container.open .wsp-submenu {
+    pointer-events: auto;
+}
+
+.wsp-menu-container.open .wsp-sub-btn {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Efecto cascada de aparición (Staggered transition) */
+.wsp-menu-container.open .wsp-sub-btn:nth-child(1) { transition-delay: 0.05s; }
+.wsp-menu-container.open .wsp-sub-btn:nth-child(2) { transition-delay: 0.1s; }
+.wsp-menu-container.open .wsp-sub-btn:nth-child(3) { transition-delay: 0.15s; }
+
+@media (max-width: 480px) {
+    .wsp-menu-container {
+        bottom: 1rem;
+        left: 1rem;
+    }
+}
+
+.footer-logo {
+    font-family: 'Alice', serif;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: lowercase;
+}
